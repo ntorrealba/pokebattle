@@ -1,0 +1,28 @@
+
+
+<div class="bg-white mb-8">
+
+  <div class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate text-center mb-12">Pokemones</div>
+
+    <div class="grid grid-cols-3 gap-12 justify-items-center  px-72">
+      <% @pokemon_id.each do |pokemon| %>
+        <div class="bg-grass w-64 h-40 rounded-2xl px-4 py-1 ">
+          <div class="text-white text-right pt-4 text-xl font-medium mr-3"> <%= "##{pokemon[1]["id"]}" %></div>
+
+          <div class="text-white text-left text-xl font-semibold capitalize mb-2.5 ml-2.5"><%= pokemon[0]%> </div>
+
+            <% pokemon[1]["types"].each do |type| %>
+              <div class="bg-white rounded-3xl text-white text-base text-center font-medium w-24 px-5 py-0.5 ml-2.5 mb-2 bg-opacity-20 capitalize" ><%= type["type"]["name"] %></div>
+              <%# <div class="bg-white rounded-3xl text-white text-xl font-medium w-24 px-4 py-0.5 bg-opacity-20">Possion</div> %>
+            <%end %>
+
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+
+
+
+<%# <%= link_to 'New Pokemon', new_pokemon_path %>
