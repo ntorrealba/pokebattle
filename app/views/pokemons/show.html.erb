@@ -1,18 +1,71 @@
-<div class= "bg-grass h-screen relative ">
+<div class= "bg-<%=@pokemon.color%> h-2/5 relative   ">
 
-  <div class="text-white text-left text-xl font-semibold capitalize mb-2.5 ml-2.5">Picachu </div>
+  <div class="flex justify-between pt-12 px-8">
+    <div class="flex flex-col">
+      <div >
+        <div id="btn-back"class=""><a href="/pokemons"><svg width="20" height="22" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.939341 10.9393C0.353554 11.5251 0.353554 12.4749 0.939341 13.0607L10.4853 22.6066C11.0711 23.1924 12.0208 23.1924 12.6066 22.6066C13.1924 22.0208 13.1924 21.0711 12.6066 20.4853L4.12132 12L12.6066 3.51472C13.1924 2.92893 13.1924 1.97919 12.6066 1.3934C12.0208 0.807611 11.0711 0.807611 10.4853 1.3934L0.939341 10.9393ZM22 10.5L2 10.5V13.5L22 13.5V10.5Z" fill="#FEFEFE"/></svg></a></div>
+      </div>
 
-  <div class="absolute inset-x-80 top-24 ">
-    <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M207.5 153.689C202.411 186.311 174.107 211.289 139.911 211.289C105.714 211.289 77.4108 186.311 72.3215 153.689H0.000106812C6.8751 224.533 66.9644 280 140 280C213.036 280 273.036 224.533 280 153.689H207.5Z" fill="#FEFEFE" fill-opacity="0.2"/>
-    <path d="M140 196.408C168.995 196.408 192.5 173.008 192.5 144.142C192.5 115.276 168.995 91.875 140 91.875C111.005 91.875 87.5 115.276 87.5 144.142C87.5 173.008 111.005 196.408 140 196.408Z" fill="#FEFEFE" fill-opacity="0.2"/>
-    <path d="M73.6607 126.311C81.25 96.8889 108.036 75.1111 140 75.1111C171.964 75.1111 198.75 96.8889 206.25 126.311H279.911C273.036 55.4667 212.946 0 140 0C66.9643 0 6.875 55.4667 0 126.311H73.6607Z" fill="#FEFEFE" fill-opacity="0.2"/>
-    </svg>
+      <div class="mt-16 text-white text-left text-3xl font-semibold capitalize mb-10 "><%= @pokemon.name %></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-1">
+        <% @pokemon.types.each do |type| %>
+          <div id= "type" class="bg-white rounded-3xl text-white text-base text-center font-medium w-24 px-5 py-0.5 ml-1.5 mb-2 bg-opacity-20 capitalize">
+            <%= type %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div  class="pt-44 relative ">
+      <div id="img_pokeball" class=" ">
+        <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M207.5 153.689C202.411 186.311 174.107 211.289 139.911 211.289C105.714 211.289 77.4108 186.311 72.3215 153.689H0.000106812C6.8751 224.533 66.9644 280 140 280C213.036 280 273.036 224.533 280 153.689H207.5Z" fill="#FEFEFE" fill-opacity="0.2"/>
+        <path d="M140 196.408C168.995 196.408 192.5 173.008 192.5 144.142C192.5 115.276 168.995 91.875 140 91.875C111.005 91.875 87.5 115.276 87.5 144.142C87.5 173.008 111.005 196.408 140 196.408Z" fill="#FEFEFE" fill-opacity="0.2"/>
+        <path d="M73.6607 126.311C81.25 96.8889 108.036 75.1111 140 75.1111C171.964 75.1111 198.75 96.8889 206.25 126.311H279.911C273.036 55.4667 212.946 0 140 0C66.9643 0 6.875 55.4667 0 126.311H73.6607Z" fill="#FEFEFE" fill-opacity="0.2"/>
+        </svg>
+      </div>
+      <%= image_tag(@pokemon.image, size: "220", class: "absolute -bottom-10 -left-16") %>
+    </div>
+
+    <div class="flex flex-col">
+
+      <div id= "btn_heard" class="pt-28"><a  href="" ><svg width="28" height="24" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.6464 1.53992L24.6483 1.54009C27.0542 1.75241 30.0776 3.84088 30.5 8.10428V9.66343C30.1249 13.6423 26.8381 19.0759 15.9784 26.2102C5.16317 19.0766 1.87518 13.6435 1.5 9.66343V8.09718C1.87759 3.86643 4.8731 1.79572 7.36259 1.53912C7.79536 1.50083 8.19501 1.5 8.66376 1.5C10.2673 1.5 11.3477 1.80962 12.2261 2.29793C13.1376 2.80465 13.934 3.55785 14.9134 4.63522L16.0364 5.87062L17.1449 4.62217C18.0972 3.54975 18.8809 2.80019 19.7826 2.29634C20.6531 1.80994 21.7319 1.5 23.3362 1.5C23.8082 1.5 24.2101 1.50084 24.6464 1.53992Z" stroke="#FEFEFE" stroke-width="3"/></svg></a></div>
+
+      <div class="text-white text-left text-2xl font-semibold capitalize mt-10 mb-2.5 "><%= "##{@pokemon.id}" %> </div>
+    </div>
+
   </div>
 
-  <div class="bg-white absolute inset-x-0 bottom-0 h-1/2 rounded-t-3xl"> hola</div>
+  <div class="bg-white rounded-t-3xl flex flex-col items-center pb-24">
+
+    <%# <%= link_to 'Batalla', url, class:  %>
+    <div><a id="btn_battle" href="" class=" block w-44 h-12 text-center rounded-full border border-transparent bg-indigo-600 px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20"aria-describedby="tier-hobby">Batalla</a></div>
+
+    <div class="pt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-60 ">
+      <div class= "flex flex-col items-center">
+        <div id="btn_info" class="text-xl font-medium text-gray-500 hover:text-indigo-600 mb-6">Iformacion
+        </div>
+        <div id="divide_one"class=""><svg width="212" height="2" viewBox="0 0 212 2" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="212" height="2" fill="#415BA6"/></svg></div>
+      </div>
 
 
+      <div class= "flex flex-col items-center">
+        <div id="btn_habilitys" class="text-xl font-medium text-gray-500 hover:text-indigo-600 mb-6">Habilidades
+        </div>
+        <div id="divide_two"class=""><svg width="212" height="2" viewBox="0 0 212 2" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="212" height="2" fill="#415BA6"/></svg></div>
+      </div>
+
+      <div class= "flex flex-col items-center">
+        <div id="btn_move" class="text-xl font-medium text-gray-500 hover:text-indigo-600 mb-6">Ataques
+        </div>
+        <div id="divide_three"class=""><svg width="212" height="2" viewBox="0 0 212 2" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="212" height="2" fill="#415BA6"/></svg></div>
+      </div>
+
+    </div>
+
+
+  </div>
 
 
 </div>

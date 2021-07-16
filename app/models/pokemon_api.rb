@@ -1,5 +1,5 @@
 class PokemonApi
-  attr_accessor :name, :url
+  attr_accessor :name, :url, :move
   attr_reader :id, :types, :color, :image
 
   URL = 'https://pokeapi.co/api/v2/pokemon?limit=12&offset=0'
@@ -12,16 +12,18 @@ class PokemonApi
     pokemons
   end
 
-  def self.id(id)
+  def self.find(id)
     url = "https://pokeapi.co/api/v2/pokemon/#{id}"
-    # response = RestClient.get(url, { accept: 'application/json' })
-    # pokemon_parsed = JSON.parse(response.body)
-    pokemon = PokemonApi.new(url: url)
+    response = RestClient.get(url, { accept: 'application/json' })
+    pokemon_parsed = JSON.parse(response.body)
+    # binding.pry
+    pokemon = PokemonApi.new(url: url, name: pokemon_parsed["name"])
   end
 
-  def initialize(name: "", url:)
+  def initialize(name: "", url:, move:"")
     @name = name
     @url = url
+    @move = move
     get_info
   end
 
@@ -34,6 +36,8 @@ class PokemonApi
     @id = info_parsed['id']
     @types = info_parsed['types'].map{|type| type["type"]["name"] }
     @color = @types.first.downcase
-    @image = info_parsed['sprites']["front_default"]
+    #@image_battle = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{@id}.png"
+    #@image_battle_back="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{@id}.png"
+    @image = "https://pokeres.bastionbot.org/images/pokemon/#{@id}.png"
   end
 end

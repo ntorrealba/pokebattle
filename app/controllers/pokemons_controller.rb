@@ -6,7 +6,7 @@ class PokemonsController < ApplicationController
 
   def show
     id = params["id"]
-    @pokemon = PokemonApi.id(id)
+    @pokemon = PokemonApi.find(id)
   end
 
 end
