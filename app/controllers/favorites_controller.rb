@@ -1,16 +1,11 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: %i[ show edit update destroy ]
 
   # GET /favorites or /favorites.json
   def index
-    @favorites = Favorite.all
+    @user = User.find_by(id: params[:id])
+    @pokemons = Pokemon.where(user_id: @user.id)
   end
 
-  # GET /favorites/1 or /favorites/1.json
-  def show
-  end
-
-  # GET /favorites/new
   def new
     @favorite = Favorite.new
   end
@@ -57,10 +52,6 @@ class FavoritesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_favorite
-      @favorite = Favorite.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def favorite_params

@@ -1,4 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/navigation' %>
+<div class="bg-white px-8 h-auto mb-16 mx-8 px-52 py-12">
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <div class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate text-center mb-12">Perfil</div>
+
+  <div class="mt-1 flex items-center">
+    <div>
+      <svg width="54" height="54" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M94.8572 70.2576C92.5306 85.1706 79.5919 96.589 63.9592 96.589C48.3266 96.589 35.3878 85.1706 33.0613 70.2576H0.00012207C3.14298 102.644 30.6123 128 64.0001 128C97.3878 128 124.816 102.644 128 70.2576H94.8572Z" fill="#d1d1d1" fill-opacity=""/>
+      <path d="M64 89.7866C77.2548 89.7866 87.9999 79.0892 87.9999 65.8933C87.9999 52.6974 77.2548 42 64 42C50.7452 42 40 52.6974 40 65.8933C40 79.0892 50.7452 89.7866 64 89.7866Z" fill="#d1d1d1" fill-opacity=""/>
+      <path d="M33.6734 57.7422C37.1428 44.292 49.3877 34.3365 63.9999 34.3365C78.6122 34.3365 90.8571 44.292 94.2856 57.7422H127.959C124.816 25.3562 97.3468 0 63.9999 0C30.6122 0 3.14285 25.3562 0 57.7422H33.6734Z" fill="#CC0000" fill-opacity=""/>
+      </svg>
+    </div>
+    <div class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700">
+      Principiante
+    </div>
+  </div>
+
+  <p id="notice"><%= notice %></p>
+  <div><%= @user.name %></div>
+  <div><%= @user.last_name %></div>
+
+  <%= link_to 'Back', users_path, class:"ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
+
+
+</div>

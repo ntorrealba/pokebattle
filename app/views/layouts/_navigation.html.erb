@@ -7,12 +7,13 @@
         <div class= "mr-20"> <%= render 'layouts/logo' %></div>
         <li>
           <div>
-            <a href="" class="text-sm font-medium text-gray-500 hover:text-black mr-20">Pokemones</a>
+            <%= link_to "Pokemones", pokemons_path, class: "text-sm font-medium text-gray-500 hover:text-black mr-20"  %>
           </div>
         </li>
+
         <li>
           <div>
-            <a href="" class="text-sm font-medium text-gray-500 hover:text-black mr-20">Favoritos</a>
+            <%= link_to "Favoritos", favorites_path, class: "text-sm font-medium text-gray-500 hover:text-black mr-20"  %>
           </div>
         </li>
         <li>

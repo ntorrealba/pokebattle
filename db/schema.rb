@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_193443) do
+ActiveRecord::Schema.define(version: 2021_07_21_152243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,18 @@ ActiveRecord::Schema.define(version: 2021_07_05_193443) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "pokemon_id", null: false
+    t.bigint "type_id", null: false
     t.index ["pokemon_id"], name: "index_detail_types_on_pokemon_id"
+    t.index ["type_id"], name: "index_detail_types_on_type_id"
   end
 
   create_table "favorites", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "pokemon_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["pokemon_id"], name: "index_favorites_on_pokemon_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "movements", force: :cascade do |t|
@@ -32,21 +38,18 @@ ActiveRecord::Schema.define(version: 2021_07_05_193443) do
     t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "pokemon_id", null: false
+    t.index ["pokemon_id"], name: "index_movements_on_pokemon_id"
   end
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
-    t.integer "wight"
-    t.string "hability"
     t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "movement_id", null: false
-    t.bigint "favorite_id", null: false
-    t.bigint "detail_type_id", null: false
-    t.index ["detail_type_id"], name: "index_pokemons_on_detail_type_id"
-    t.index ["favorite_id"], name: "index_pokemons_on_favorite_id"
-    t.index ["movement_id"], name: "index_pokemons_on_movement_id"
+    t.bigint "user_id", null: false
+    t.integer "pokeapi_id"
+    t.index ["user_id"], name: "index_pokemons_on_user_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -63,17 +66,13 @@ ActiveRecord::Schema.define(version: 2021_07_05_193443) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "pokemon_id", null: false
-    t.bigint "favorite_id", null: false
-    t.index ["favorite_id"], name: "index_users_on_favorite_id"
-    t.index ["pokemon_id"], name: "index_users_on_pokemon_id"
   end
 
   add_foreign_key "detail_types", "pokemons"
-  add_foreign_key "pokemons", "detail_types"
-  add_foreign_key "pokemons", "favorites"
-  add_foreign_key "pokemons", "movements"
+  add_foreign_key "detail_types", "types"
+  add_foreign_key "favorites", "pokemons"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "movements", "pokemons"
+  add_foreign_key "pokemons", "users"
   add_foreign_key "types", "detail_types"
-  add_foreign_key "users", "favorites"
-  add_foreign_key "users", "pokemons"
 end
