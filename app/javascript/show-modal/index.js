@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', showModal);
-document.ready(showModal);
+// document.ready(showModal);
 
 function showModal() {
 
