@@ -13,8 +13,8 @@ class FavoritesController < ApplicationController
     @pokemon = Pokemon.find_by(number: params[:number], user_id: @user)
     if @pokemon.nil?
       pokemon = PokemonApi.find(params[:number])
-      pokemon_new = pokemon.new_pokemon(current_user)
-      @pokemon = pokemon_new
+      new_favorites = pokemon.new_pokemon(current_user)
+      @pokemon = new_favorites
     end
     @favorite = @user.favorites.build(pokemon_id: @pokemon.id, number: params[:number] )
 
@@ -42,7 +42,7 @@ class FavoritesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to favorites_url, notice: "Favorite was successfully destroyed." }
+        format.html { redirect_to pokemon_path(params[:number]), notice: "Favorite was successfully destroyed." }
         format.json { head :no_content }
       end
     end
