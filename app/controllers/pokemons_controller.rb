@@ -1,32 +1,41 @@
 class PokemonsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @pokemons = PokemonApi.all
   end
 
   def show
-    id = params["id"]
-    @pokemon = PokemonApi.find(id)
+    if @pokemon.nil?
+      @pokemon = PokemonApi.find(params[:id])
+    else
+      @pokemon = Pokemon.find_by(id: params[:id])
+    end
   end
 
   def create
-    @pokemon_new = Pokemon.new(pokemons_params)
+    pokemon = Pokemon.new(pokemons_params)
+    # @pokemon = Pokemon.new(pokemons_params)
 
     respond_to do |format|
-      if @pokemon_new.save
+      if pokemon.save
         format.html { }
-        format.json { render :show, status: :created, location: @pokemon_new }
+        format.json
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @pokemon_new.errors, status: :unprocessable_entity }
+        format.html { render :show, status: :unprocessable_entity }
+        format.json { render json: pokemon.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def new
+    @pokemon = Pokemon.new
   end
 
   private
 
   def pokemons_params
-    params.require(:pokemon).permit(:name, :wight, :hability, :user_id)
+    params.require(:pokemon).permit(:name, :level, :number, :types, :height, :weight, :abilities, :moves, :base_states, :user_id)
   end
 
 end

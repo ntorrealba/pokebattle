@@ -1,0 +1,65 @@
+<div class="bg-white h-20 mb-16 ml-32 ">
+
+  <nav class="hidden sm:flex flex justify-between " aria-label="Breadcrumb">
+
+    <div class= "mt-14">
+      <ol class="flex items-center ">
+        <div class= "mr-44"> <%= render 'layouts/logo' %></div>
+        <li>
+          <div>
+            <%= link_to "Pokemones", pokemons_path, class: "text-sm font-medium text-gray-500 hover:text-black mr-20"  %>
+          </div>
+        </li>
+
+        <li>
+          <div>
+            <%= link_to "Favoritos", pokemons_path, class: "text-sm font-medium text-gray-500 hover:text-black mr-20"  %>
+          </div>
+        </li>
+        <li>
+          <div>
+            <a href="" class="ml-4 text-sm font-medium text-gray-500 hover:text-black">Estadisticas</a>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class= "relative"><svg width="200" height="184" viewBox="0 0 222 238" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M222.321 102.667C216.869 137.619 186.543 164.381 149.904 164.381C113.265 164.381 82.9401 137.619 77.4873 102.667L0.00012207 102.667C7.36619 178.571 71.7475 238 150 238C228.253 238 292.538 178.571 300 102.667H222.321Z" fill="#F1F0F0" fill-opacity="0.5"/>
+    <path d="M150 148.437C181.066 148.437 206.25 123.365 206.25 92.4375C206.25 61.5096 181.066 36.4375 150 36.4375C118.934 36.4375 93.75 61.5096 93.75 92.4375C93.75 123.365 118.934 148.437 150 148.437Z" fill="#F1F0F0" fill-opacity="0.5"/>
+    <path d="M78.9222 73.3333C87.0535 41.8095 115.753 18.4762 150 18.4762C184.247 18.4762 212.946 41.8095 220.982 73.3333H299.904C292.538 -2.57145 228.157 -62 150 -62C71.7474 -62 7.36607 -2.57145 0 73.3333H78.9222Z" fill="#F1F0F0" fill-opacity="0.5"/>
+    </svg>
+      <div class="absolute left-0 top-14">
+        <%= link_to 'Sign up', new_user_registration_path, class: " w-20 h-8 ml-3 inline-flex items-center px-3.5 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium  text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300" %>
+      </div>
+    </div>
+
+  </nav>
+</div>
+
+<div class= "bg-white h-64 flex items-center flex-col pt-14">
+
+  <p class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl  text-center mb-12">Bienvenido</p>
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field mb-6">
+      <%= f.label :email,  class:"block text-lg font-medium text-gray-700" %><br />
+      <div class="mt-1 rounded-md border-gray-900 border">
+        <%= f.email_field :email, autocomplete: "email", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md px-2 h-9" %>
+      </div>
+    </div>
+
+    <div class="field mb-4">
+      <%= f.label :password, "Contraseña", class:"block text-lg font-medium text-gray-700" %><br />
+      <div class=" rounded-md border-gray-900 border">
+       <%= f.password_field :password, autocomplete: "current-password", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md px-2 h-9" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Log in", class: "h-8 ml-3 inline-flex items-center px-4 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700" %>
+    </div>
+  <% end %>
+
+</div>

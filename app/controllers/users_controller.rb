@@ -29,9 +29,10 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to pokemons_path }
+        format.html { redirect_to users_path }
         format.json
       else
+        flash.alert  = @user.errors.full_messages
         format.html { render :new, status: :unprocessable_entity }
         format.json
       end

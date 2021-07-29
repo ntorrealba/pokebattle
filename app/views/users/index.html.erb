@@ -5,9 +5,13 @@
     <% @users.each do |user| %>
 
         <p><%=  user.name %></p>
+        <p><%=  user.last_name %></p>
+        <p><%=  user.email %></p>
     <% end %>
-
+   <p><%= link_to 'salir', destroy_user_session_path, method: :delete %></p>
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'log in', new_user_session_path %>
+<%= link_to 'user_session_path ', user_session_path %>
+<%= link_to 'new_user_registration_path	 ', new_user_registration_path	 %>

@@ -4,12 +4,13 @@
   <div class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate text-center mb-12">Pokemones</div>
 
   <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center">
-    <% @pokemons.each do |pokemon| %>
-      <%= link_to pokemon_path(pokemon.id), class:" bg-#{pokemon.color} w-64 h-40 rounded-2xl px-4 py-3 relative" do %>
+   <% @pokemons.each do |pokemon| %>
+      <% color = pokemon.types.first %>
+      <%= link_to pokemon_path(pokemon.number), class:" bg-#{color} w-64 h-40 rounded-2xl px-4 py-3 relative" do %>
 
-        <div class="text-white text-right text-xl font-medium mr-3"> <%= "##{pokemon.id}" %></div>
+        <div class="text-white text-right text-xl font-medium mr-3"> <%= "##{pokemon.number}" %></div>
 
-        <div class="text-white text-left text-xl font-semibold capitalize mb-2.5 ml-2.5"><%= pokemon.name%> </div>
+        <div class="text-white text-left text-xl font-semibold capitalize mb-2.5 ml-2.5"><%= pokemon.name %> </div>
 
         <div class="absolute bottom-0 right-0">
           <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +19,7 @@
           <path d="M33.6734 57.7422C37.1428 44.292 49.3877 34.3365 63.9999 34.3365C78.6122 34.3365 90.8571 44.292 94.2856 57.7422H127.959C124.816 25.3562 97.3468 0 63.9999 0C30.6122 0 3.14285 25.3562 0 57.7422H33.6734Z" fill="#FEFEFE" fill-opacity="0.2"/>
           </svg>
         </div>
-        <%= image_tag(pokemon.image, size: "84", class: "absolute top-14 right-2.5") %>
+        <%#= image_tag(pokemon.image, size: "84", class: "absolute top-14 right-2.5") %>
 
         <% pokemon.types.each do |type| %>
           <div id= "type" class="bg-white rounded-3xl text-white text-base text-center font-medium w-24 px-5 py-0.5 ml-2.5 mb-2 bg-opacity-20 capitalize">

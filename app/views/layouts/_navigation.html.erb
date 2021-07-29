@@ -4,7 +4,7 @@
 
     <div class= "mt-14">
       <ol class="flex items-center ">
-        <div class= "mr-20"> <%= render 'layouts/logo' %></div>
+        <div class= "mr-44"> <%= render 'layouts/logo' %></div>
         <li>
           <div>
             <%= link_to "Pokemones", pokemons_path, class: "text-sm font-medium text-gray-500 hover:text-black mr-20"  %>
@@ -13,7 +13,7 @@
 
         <li>
           <div>
-            <%= link_to "Favoritos", favorites_path, class: "text-sm font-medium text-gray-500 hover:text-black mr-20"  %>
+            <%= link_to "Favoritos", user_favorites_path(current_user), class: "text-sm font-medium text-gray-500 hover:text-black mr-20"  %>
           </div>
         </li>
         <li>
@@ -29,10 +29,19 @@
     <path d="M150 148.437C181.066 148.437 206.25 123.365 206.25 92.4375C206.25 61.5096 181.066 36.4375 150 36.4375C118.934 36.4375 93.75 61.5096 93.75 92.4375C93.75 123.365 118.934 148.437 150 148.437Z" fill="#F1F0F0" fill-opacity="0.5"/>
     <path d="M78.9222 73.3333C87.0535 41.8095 115.753 18.4762 150 18.4762C184.247 18.4762 212.946 41.8095 220.982 73.3333H299.904C292.538 -2.57145 228.157 -62 150 -62C71.7474 -62 7.36607 -2.57145 0 73.3333H78.9222Z" fill="#F1F0F0" fill-opacity="0.5"/>
     </svg>
-      <div class=" absolute left-14 top-14  flex-shrink-0 flex md:mt-0 md:ml-4 mr-14">
-        <button type="button" class=" w-16 h-10 ml-3 text-center px-2  border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-500 bg-gray-300 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-          <a href="">Login</a>
-        </button>
+      <div class="absolute -left-9 top-14  flex-shrink-0 flex md:mt-0 md:ml-4 mr-14">
+        <% if user_signed_in? %>
+          <a href="/users/<%=current_user.id %>" class="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"><%= current_user.email %></a>
+
+        <% else %>
+          <%= link_to 'Sign up', new_user_registration_path, class: " w-20 h-8 ml-3 inline-flex items-center px-5 py-2  text-center border border-transparent rounded-md shadow-sm text-sm font-medium  text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300" %>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "w-20 h-8 ml-3 inline-flex items-center px-3 py-2  text-center border border-transparent rounded-md shadow-sm text-sm font-medium  text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300"%>
+        <%else %>
+          <%= link_to "Log in", user_session_path, class: "h-8 ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-500 bg-gray-300 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
+        <%end %>
       </div>
     </div>
 
