@@ -1,0 +1,62 @@
+<div class= "bg-battle">
+  <div class= "h-2/4 relative  ">
+
+    <div class="flex justify-between pt-12 px-8 pb-48">
+      <div class="flex flex-col">
+
+        <div id="btn-back"class=""><a href=""><svg width="20" height="22" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.939341 10.9393C0.353554 11.5251 0.353554 12.4749 0.939341 13.0607L10.4853 22.6066C11.0711 23.1924 12.0208 23.1924 12.6066 22.6066C13.1924 22.0208 13.1924 21.0711 12.6066 20.4853L4.12132 12L12.6066 3.51472C13.1924 2.92893 13.1924 1.97919 12.6066 1.3934C12.0208 0.807611 11.0711 0.807611 10.4853 1.3934L0.939341 10.9393ZM22 10.5L2 10.5V13.5L22 13.5V10.5Z" fill="#FEFEFE"/></svg></a></div>
+
+        <div class="mt-16 text-white text-left text-3xl font-semibold capitalize mb-10 ">Batalla</div>
+
+        <div class="flex flex-items-center mb-30">
+
+          <div class="bg-white rounded-3xl text-white text-base text-center font-medium w-24 px-5 py-0.5 bg-opacity-20 capitalize mr-2 ">
+            Poke1
+          </div>
+          <p class="text-white font-medium mr-2">vs</p>
+          <div class="bg-white rounded-3xl text-white text-base text-center font-medium w-24 px-5 py-0.5 bg-opacity-20 capitalize ">
+            Poke2
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div  class="absolute top-24 right-20">
+      <div id="battle" class="relative">
+        <%= render 'layouts/battlefield' %>
+
+        <div class="absolute  top-64 right-56 flex flex-col">
+          <div id="pokemon2" class="px-36">pokemon2</div>
+          <div id="base1" >
+            <%= render 'layouts/oneground' %>
+          </div>
+        </div>
+
+        <div class="absolute bottom-48 left-40 flex flex-col">
+          <div id="pokemon1" class="px-36">Pokemon1</div>
+          <div id="base2" >
+            <%= render 'layouts/twoground' %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mt-30 bg-white rounded-t-3xl pb-24 z-10">
+    <div class="flex flex-col items-center">
+
+      <div class="pt-72 px-60 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-24 ">
+
+        <div class=""><a id="" href="" class=" block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20" aria-describedby="tier-hobby">Ataque 1</a></div>
+
+        <div class=""><a id="" href="" class=" block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20" aria-describedby="tier-hobby">Ataque 2</a></div>
+
+        <div class=""><a id="" href="" class=" block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20" aria-describedby="tier-hobby">Ataque 3</a></div>
+
+        <div class=""><a id="" href="" class=" block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20" aria-describedby="tier-hobby">Ataque 4</a></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', showModal);
-// document.ready(showModal);
+//document.ready(showModal);
 
 function showModal() {
 
@@ -13,8 +13,6 @@ function showModal() {
 
   const btnOpenModal = document.querySelectorAll('.show-modal');
 
-  const btnHeart = document.querySelector('#btn_heard')
-  const btnHeartTwo = document.querySelector('#btn_two_heard')
 
   for (let i = 0; i < btnOpenModal.length; i++)
 
@@ -47,8 +45,5 @@ function showModal() {
         divideThree.classList.add('hidden');
       }
     });
-
-
-
 
 }
