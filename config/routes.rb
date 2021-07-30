@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # resources :users
 
   root 'pokemons#index'
-  resources :users,shallow: true do
+  resources :users, except: [:index], shallow: true do
     resources :pokemons, except: [:index]
     resources :favorites
   end
