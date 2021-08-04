@@ -42,6 +42,9 @@ class PokemonApi
     attributes = {name: @name, level: 0, number: @number, types: @types, height: @height, weight: @weight, abilities: @abilities, moves: @moves, base_states: @base_states}
     # pokemon = user.pokemons.build(attributes)
     pokemon = user.pokemons.build(attributes)
+    pokemon.images.attach(io: open(@image), filename: 'image.jpg')
+    pokemon.images.attach(io: open(@image_battle), filename: 'image.jpg')
+    pokemon.images.attach(io: open(@image_battle_back), filename: 'image.jpg')
     pokemon.save
     pokemon
   end
@@ -54,8 +57,8 @@ class PokemonApi
     @number = info_parsed['id']
     @types = info_parsed['types'].map{|type| type["type"]["name"] }
     @color = @types.first.downcase
-    #@image_battle = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{@id}.png"
-    #@image_battle_back="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{@id}.png"
+    @image_battle = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{@number}.png"
+    @image_battle_back="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{@number}.png"
     @image = "https://pokeres.bastionbot.org/images/pokemon/#{@number}.png"
     @moves = info_parsed['moves'].map{ |move| [move["move"]["name"], move["version_group_details"][0]["level_learned_at"]]}
     base_states = info_parsed['stats'].map{ |stat| [stat["stat"]["name"], stat["base_stat"]]}

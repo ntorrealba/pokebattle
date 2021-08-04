@@ -11,7 +11,7 @@
         <div class="flex flex-items-center mb-30">
 
           <div class="bg-white rounded-3xl text-white text-base text-center font-medium w-24 px-5 py-0.5 bg-opacity-20 capitalize mr-2 ">
-            Poke1
+            <%= @pokemon.name %>
           </div>
           <p class="text-white font-medium mr-2">vs</p>
           <div class="bg-white rounded-3xl text-white text-base text-center font-medium w-24 px-5 py-0.5 bg-opacity-20 capitalize ">
@@ -34,8 +34,8 @@
         </div>
 
         <div class="absolute bottom-48 left-40 flex flex-col">
-          <div id="pokemon1" class="px-36">Pokemon1</div>
-          <div id="base2" >
+          <div id="pokemon1" class="px-36"> <%= image_tag @pokemon.images[2], size:"300" %> </div>
+          <div id="base2">
             <%= render 'layouts/twoground' %>
           </div>
         </div>
