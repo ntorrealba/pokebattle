@@ -1,6 +1,6 @@
 class PokemonApi
-  attr_accessor :name, :url, :height, :weight
-  attr_reader :number, :types, :color, :image, :moves, :base_states, :abilities
+  attr_accessor :name, :url, :height, :weight, :images
+  attr_reader :number, :types, :color, :image, :moves, :base_states, :abilities, :image_battle, :image_battle_back
   URL = 'https://pokeapi.co/api/v2/pokemon?limit=12&offset=0'
 
   def self.all

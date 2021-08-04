@@ -1,3 +1,4 @@
+require 'open-uri'
 class Pokemon < ApplicationRecord
   require 'open-uri'
   belongs_to :user

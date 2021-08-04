@@ -1,5 +1,9 @@
-document.addEventListener('DOMContentLoaded', showModal);
-//document.ready(showModal);
+document.addEventListener('turbolinks:load', function () {
+  const page = document.getElementById('page-pokemon-show')
+  if page {
+    showModal()
+  }
+});
 
 function showModal() {
 
