@@ -74,6 +74,10 @@
     color: #636262;
   }
   .bg-battle {
-    background: #415BA6
+    background: #415BA6;
   }
-}
+  .moves {
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+
+  }

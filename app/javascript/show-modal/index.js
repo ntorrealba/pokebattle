@@ -1,4 +1,12 @@
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener('turbolinks:load', function () {
+  const page = document.getElementById('page-pokemon-show')
+  if (page) {
+    showModal()
+  }
+});
+
+function showModal() {
+
   const modalOne = document.querySelector('#modal-one');
   const modalTwo = document.querySelector('#modal-two');
   const modalThree = document.querySelector('#modal-three');

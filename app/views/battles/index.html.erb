@@ -27,12 +27,12 @@
       <div id="battle" class="relative">
         <%= render 'layouts/battlefield' %>
 
-        <div id="pokemon2" class="px-10 absolute top-32 right-56 flex flex-col z-30"><%= image_tag @game.image_battle, size:"300" %></div>
+        <div id="pokemon2" class="moves px-10 absolute top-32 right-56 flex flex-col z-30 animate__animated"><%= image_tag @game.image_battle, size:"300" %></div>
         <div id="base2" class="absolute  top-80 right-56 flex flex-col z-20">
           <%= render 'layouts/oneground' %>
         </div>
 
-        <div id="pokemon1" class="px-20 absolute bottom-48 left-40 z-30"><%= image_tag @pokemon.images[2], size:"300"%></div>
+        <div id="pokemon1" class="moves px-20 absolute bottom-48 left-40 z-30 animate__animated"><%= image_tag @pokemon.images[2], size:"300"%></div>
         <div id="base1" class="absolute bottom-48 left-40 flex flex-col z-20">
           <%= render 'layouts/twoground' %>
         </div>
@@ -47,7 +47,9 @@
       <div class="pt-72 px-60 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-24 ">
         <% four_moves = @pokemon.moves.take(4) %>
         <% four_moves.each do |move| %>
-          <button class=" block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20 capitalize button-move" aria-describedby="tier-hobby"><%= move[0] %> </button>
+
+          <button class="btn-move block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20 capitalize" aria-describedby="tier-hobby"><%= move[0] %></button>
+
         <%end%>
       </div>
     </div>

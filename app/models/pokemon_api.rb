@@ -60,7 +60,7 @@ class PokemonApi
     @image_battle = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{@number}.png"
     @image_battle_back="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{@number}.png"
     #@image = "https://pokeres.bastionbot.org/images/pokemon/#{@number}.png"
-    @image ="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{@number}.png"
+    @image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{@number}.png"
     @moves = info_parsed['moves'].map{ |move| [move["move"]["name"], move["version_group_details"][0]["level_learned_at"]]}
     base_states = info_parsed['stats'].map{ |stat| [stat["stat"]["name"], stat["base_stat"]]}
     @base_states = base_states.reverse
