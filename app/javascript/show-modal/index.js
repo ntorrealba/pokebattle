@@ -1,6 +1,6 @@
-document.addEventListener('turbolinks:load', function () {
+edocument.addEventListener('turbolinks:load', function () {
   const page = document.getElementById('page-pokemon-show')
-  if page {
+  if (page) {
     showModal()
   }
 });
