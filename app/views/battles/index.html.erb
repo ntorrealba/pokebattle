@@ -47,11 +47,8 @@
       <div class="pt-72 px-60 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-24 ">
         <% four_moves = @pokemon.moves.take(4) %>
         <% four_moves.each do |move| %>
-
-          <div class=""><a id="" href="" class=" block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20 capitalize" aria-describedby="tier-hobby"><%= move[0] %></a></div>
-
+          <button class=" block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20 capitalize button-move" aria-describedby="tier-hobby"><%= move[0] %> </button>
         <%end%>
-
       </div>
     </div>
   </div>

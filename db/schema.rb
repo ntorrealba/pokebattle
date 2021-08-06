@@ -107,8 +107,6 @@ ActiveRecord::Schema.define(version: 2021_07_30_145035) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "detail_types", "pokemons"
   add_foreign_key "detail_types", "types"
   add_foreign_key "favorites", "pokemons"

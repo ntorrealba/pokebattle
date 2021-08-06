@@ -1,5 +1,5 @@
 class PokemonApi
-  attr_accessor :name, :url, :height, :weight, :images
+  attr_accessor :name, :url, :height, :weight
   attr_reader :number, :types, :color, :image, :moves, :base_states, :abilities, :image_battle, :image_battle_back
   URL = 'https://pokeapi.co/api/v2/pokemon?limit=12&offset=0'
 
@@ -59,7 +59,8 @@ class PokemonApi
     @color = @types.first.downcase
     @image_battle = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{@number}.png"
     @image_battle_back="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{@number}.png"
-    @image = "https://pokeres.bastionbot.org/images/pokemon/#{@number}.png"
+    #@image = "https://pokeres.bastionbot.org/images/pokemon/#{@number}.png"
+    @image ="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{@number}.png"
     @moves = info_parsed['moves'].map{ |move| [move["move"]["name"], move["version_group_details"][0]["level_learned_at"]]}
     base_states = info_parsed['stats'].map{ |stat| [stat["stat"]["name"], stat["base_stat"]]}
     @base_states = base_states.reverse
