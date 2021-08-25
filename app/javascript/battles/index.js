@@ -12,17 +12,26 @@ window.Battle = {
     this.state.bottons = document.querySelectorAll('.btn-move');
     this.state.movements = ['animate__bounce', 'animate__swing', 'animate__shakeX', 'animate__shakeY']
     this.state.turnEvent = new Event('endTurn')
+
     this.state.bottons.forEach(botton => {
-      botton.addEventListener('click', () => {
+      let counter = 0
+      while (counter <= 4) {
+        botton.addEventListener('click', () => {
+          let randomMovement = this.getRandomIntInclusive()
+          this.state.player1.classList.add(this.state.movements[randomMovement])
+          setTimeout(() => {
+            this.state.player1.classList.remove(this.state.movements[randomMovement])
+            this.state.player2.dispatchEvent(this.state.turnEvent)
+          }, 2000)
+          counter++
+        })
+      }
+      if (counter === 4) {
+        botton.classList.add('hidden')
         console.log(this.state.player1)
-        let randomMovement = this.getRandomIntInclusive()
-        this.state.player1.classList.add(this.state.movements[randomMovement])
-        setTimeout(() => {
-          this.state.player1.classList.remove(this.state.movements[randomMovement])
-          this.state.player2.dispatchEvent(this.state.turnEvent)
-        }, 2000)
-      })
+      }
     })
+
     this.state.player2.addEventListener('endTurn', () => {
       randomMovement = this.getRandomIntInclusive()
       this.state.player2.classList.add(this.state.movements[randomMovement])
@@ -30,6 +39,7 @@ window.Battle = {
         this.state.player2.classList.remove(this.state.movements[randomMovement])
       }, 1000)
     })
+
   }
 }
 
