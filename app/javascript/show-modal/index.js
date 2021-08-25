@@ -49,4 +49,4 @@ function showModal() {
         divideThree.classList.add('hidden');
       }
     });
-})
+}
