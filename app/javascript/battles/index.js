@@ -1,49 +1,47 @@
 window.Battle = {
   state: {},
+  battle: 'Battle',
+  getRandomIntInclusive() {
+    min = Math.ceil(0);
+    max = Math.floor((this.state.movements.length - 1));
+    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+  },
   init() {
     this.state.player1 = document.getElementById('pokemon1');
     this.state.player2 = document.getElementById('pokemon2');
     this.state.bottons = document.querySelectorAll('.btn-move');
     this.state.movements = ['animate__bounce', 'animate__swing', 'animate__shakeX', 'animate__shakeY']
-    this.actions();
-    this.game();
-  },
-  actions() {
-    this.state.bottons.forEach(botton => {
-      botton.addEventListener('click', function () {
-        const randomMovement = 2
-        this.state.player1.classList.remove(...this.state.movements)
-        this.state.player1.classList.add(this.state.movements[randomMovement])
-        setTimeout(3000)
-        this.state.turnEnd = true
-      }.bind(this))
-    })
-  },
-  game() {
-    let counter = 1
+    this.state.turnEvent = new Event('endTurn')
 
-    while (counter <= 6) {
-      if (counter%2 ==! 0) {
-        const randomMovement = 2
-        this.state.currentPlayer = this.state.player2
-        this.state.currentPlayer.classList.remove(...this.state.movements)
-        this.state.currentPlayer.classList.add(this.state.movements[randomMovement])
-        debugger
+    this.state.bottons.forEach(botton => {
+      let counter = 0
+      while (counter <= 4) {
+        botton.addEventListener('click', () => {
+          let randomMovement = this.getRandomIntInclusive()
+          this.state.player1.classList.add(this.state.movements[randomMovement])
+          setTimeout(() => {
+            this.state.player1.classList.remove(this.state.movements[randomMovement])
+            this.state.player2.dispatchEvent(this.state.turnEvent)
+          }, 2000)
+          counter++
+        })
       }
-      else {
-        this.state.currentPlayer = this.state.player1
-        this.state.turnEnd = false
-        while (this.state.turnEnd) {
-          debugger
-        }
+      if (counter === 4) {
+        botton.classList.add('hidden')
+        console.log(this.state.player1)
       }
-      counter++
-    }
+    })
+
+    this.state.player2.addEventListener('endTurn', () => {
+      randomMovement = this.getRandomIntInclusive()
+      this.state.player2.classList.add(this.state.movements[randomMovement])
+      setTimeout(() => {
+        this.state.player2.classList.remove(this.state.movements[randomMovement])
+      }, 1000)
+    })
+
   }
 }
-
-
-
 
 document.addEventListener('turbolinks:load', function () {
   const page = document.getElementById('page-battle-index')
