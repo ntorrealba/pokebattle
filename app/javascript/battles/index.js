@@ -32,6 +32,7 @@ window.Battle = {
       }
     })
 
+
     this.state.player2.addEventListener('endTurn', () => {
       randomMovement = this.getRandomIntInclusive()
       this.state.player2.classList.add(this.state.movements[randomMovement])
@@ -40,8 +41,8 @@ window.Battle = {
       }, 1000)
     })
 
-  }
-}
+  },
+},
 
 document.addEventListener('turbolinks:load', function () {
   const page = document.getElementById('page-battle-index')
