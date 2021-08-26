@@ -12,11 +12,10 @@ window.Battle = {
     this.state.bottons = document.querySelectorAll('.btn-move');
     this.state.movements = ['animate__bounce', 'animate__swing', 'animate__shakeX', 'animate__shakeY']
     this.state.turnEvent = new Event('endTurn')
-
+    let counter = 0
+    console.log(counter)
     this.state.bottons.forEach(botton => {
-      let counter = 0
-      while (counter <= 4) {
-        botton.addEventListener('click', () => {
+      botton.addEventListener('click', () => {
           let randomMovement = this.getRandomIntInclusive()
           this.state.player1.classList.add(this.state.movements[randomMovement])
           setTimeout(() => {
@@ -24,12 +23,14 @@ window.Battle = {
             this.state.player2.dispatchEvent(this.state.turnEvent)
           }, 2000)
           counter++
-        })
-      }
-      if (counter === 4) {
-        botton.classList.add('hidden')
-        console.log(this.state.player1)
-      }
+          console.log(counter)
+          if (counter === 6) {
+            this.state.bottons.forEach(botton => {
+            botton.classList.add('hidden')
+            })
+          }
+      })
+
     })
 
 
