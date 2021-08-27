@@ -12,6 +12,7 @@ window.Battle = {
     this.state.bottons = document.querySelectorAll('.btn-move');
     this.state.movements = ['animate__bounce', 'animate__swing', 'animate__shakeX', 'animate__shakeY']
     this.state.turnEvent = new Event('endTurn')
+    this.state.winner = document.getElementById('modal-winner')
     let counter = 0
     console.log(counter)
     this.state.bottons.forEach(botton => {
@@ -27,6 +28,7 @@ window.Battle = {
           if (counter === 6) {
             this.state.bottons.forEach(botton => {
             botton.classList.add('hidden')
+            this.state.winner.classList.remove('hidden')
             })
           }
       })
