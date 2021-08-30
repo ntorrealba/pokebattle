@@ -10,7 +10,6 @@
         <div class="mt-16 text-white text-left text-3xl font-semibold capitalize mb-10 ">Batalla</div>
 
         <div class="flex flex-items-center mb-30">
-
           <div class="bg-white rounded-3xl text-white text-base text-center font-medium w-28 px-1 py-0.5 bg-opacity-20 capitalize mr-2 ">
             <%= @pokemon.name %>
           </div>
@@ -19,11 +18,15 @@
             <%= @game.name %>
           </div>
         </div>
+        <div class="grid grid-flow-col grid-cols-2 gap-8">
+          <p class="pl-8 text-white font-medium mr-2">100</p>
+          <p class="pl-8 text-white font-medium mr-2">100</p>
+        </div>
       </div>
 
     </div>
 
-    <div  class="absolute top-24 right-20">
+    <div  class="absolute top-24 md:right-20 lg:right-80">
       <div id="battle" class="relative">
         <%= render 'layouts/battlefield' %>
 
@@ -35,6 +38,21 @@
         <div id="pokemon1" class="moves px-20 absolute bottom-48 left-40 z-30 animate__animated"><%= image_tag @pokemon.images[2], size:"300"%></div>
         <div id="base1" class="absolute bottom-48 left-40 flex flex-col z-20">
           <%= render 'layouts/twoground' %>
+        </div>
+      </div>
+
+      <div id="modal-winner" class ="absolute top-16 right-80 z-40 hidden">
+        <h1 class="font-mono text-yellow-400 text-7xl font-extrabold pl-40 animate__animated flipInY">WINNER</h1>
+        <div class="relative  animate__animated zoomIn">
+          <svg class="border-black border-4 rounded-full" width="580" height="580" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M207.5 153.689C202.411 186.311 174.107 211.289 139.911 211.289C105.714 211.289 77.4108 186.311 72.3215 153.689H0.000106812C6.8751 224.533 66.9644 280 140 280C213.036 280 273.036 224.533 280 153.689H207.5Z" fill="#FEFEFE"/>
+          <path d="M140 196.408C168.995 196.408 192.5 173.008 192.5 144.142C192.5 115.276 168.995 91.875 140 91.875C111.005 91.875 87.5 115.276 87.5 144.142C87.5 173.008 111.005 196.408 140 196.408Z" fill="#FEFEFE"/>
+          <path d="M73.6607 126.311C81.25 96.8889 108.036 75.1111 140 75.1111C171.964 75.1111 198.75 96.8889 206.25 126.311H279.911C273.036 55.4667 212.946 0 140 0C66.9643 0 6.875 55.4667 0 126.311H73.6607Z" fill="#FF0000"/>
+          </svg>
+          <div class="absolute left-28 top-32 ">
+          <% array = [@pokemon.images[1], @game.image] %>
+          <%= image_tag array[rand(2)], size: "400" %>
+          </div>
         </div>
       </div>
 
@@ -51,7 +69,6 @@
           <button class="btn-move block w-44 h-12 text-center rounded-full border border-transparent bg-battle px-4  py-2 text-center text-xl font-medium text-white hover:bg-indigo-800 mt-20 capitalize" aria-describedby="tier-hobby"><%= move[0] %></button>
 
         <%end%>
-
       </div>
     </div>
   </div>

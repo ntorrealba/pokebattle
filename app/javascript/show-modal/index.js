@@ -16,7 +16,7 @@ function showModal() {
   const divideThree = document.querySelector('#divide-three');
 
   const btnOpenModal = document.querySelectorAll('.show-modal');
-
+  console.log(btnOpenModal);
 
   for (let i = 0; i < btnOpenModal.length; i++)
 
@@ -49,5 +49,4 @@ function showModal() {
         divideThree.classList.add('hidden');
       }
     });
-
 }
